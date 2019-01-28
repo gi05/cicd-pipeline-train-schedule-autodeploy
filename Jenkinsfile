@@ -79,10 +79,12 @@ pipeline {
         }
     }
     post {
+        cleanup {
                 kubernetesDeploy(
                     kubeconfigId: 'kubeconfig',
                     configs: 'train-schedule-kube-canary.yml',
                     enableConfigSubstitution: true
                 )
+        }
     }
 }
